@@ -1,0 +1,542 @@
+[
+  {
+    "carName": "DB11",
+    "manufacturer": "Aston Martin (UK)",
+    "model": "V12",
+    "year": "2021",
+    "fuelType": "Petrol",
+    "mileage": "12,000 km",
+    "price": "$200,000",
+    "imagePath": "https://p.autohaus-digital.de/s/v3/imgc/53410/22777814/1741807053873/640"
+  },
+  {
+    "carName": "A4",
+    "manufacturer": "Audi (Germany)",
+    "model": "Premium Plus",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "8,000 km",
+    "price": "$45,000",
+    "imagePath": "https://images.dealer.com/ddc/vehicles/2025/Audi/A4/Sedan/still/front-left/front-left-640-en_US.jpg"
+  },
+  {
+    "carName": "Bentayga",
+    "manufacturer": "Bentley (UK)",
+    "model": "V8",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "5,000 km",
+    "price": "$180,000",
+    "imagePath": "https://ymimg1.b8cdn.com/uploads/car_model/11195/pictures/13382681/2022_Bently_Bentayga_Exterior_01.png"
+  },
+  {
+    "carName": "X5",
+    "manufacturer": "BMW (Germany)",
+    "model": "xDrive40i",
+    "year": "2021",
+    "fuelType": "Hybrid",
+    "mileage": "15,000 km",
+    "price": "$70,000",
+    "imagePath": "https://platform.cstatic-images.com/in/v2/stock_photos/f40ffbad-2834-477b-8033-450393eb06c6/5533e1a1-5f66-44e5-ab3b-3573cde5a261.png"
+  },
+  {
+    "carName": "Tiggo 8",
+    "manufacturer": "Chery (China)",
+    "model": "Pro",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "3,000 km",
+    "price": "$25,000",
+    "imagePath": "https://cache2.arabwheels.ae/system/car_generation_pictures/29427/original/Cover...jpg?1735710629"
+  },
+  {
+    "carName": "Camaro",
+    "manufacturer": "Chevrolet (USA)",
+    "model": "SS",
+    "year": "2020",
+    "fuelType": "Petrol",
+    "mileage": "20,000 km",
+    "price": "$50,000",
+    "imagePath": "https://images.hgmsites.net/med/2020-chevrolet-camaro-2-door-coupe-zl1-angular-front-exterior-view_100743515_m.jpg"
+  },
+  {
+    "carName": "C3",
+    "manufacturer": "Citroen (France)",
+    "model": "Shine",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "9,000 km",
+    "price": "$18,000",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZL6MfNjIQT7LfiQMSiIlFAepPMvdNzC6T6Q&s"
+  },
+  {
+    "carName": "Mustang",
+    "manufacturer": "Ford (USA)",
+    "model": "GT",
+    "year": "2021",
+    "fuelType": "Petrol",
+    "mileage": "14,000 km",
+    "price": "$55,000",
+    "imagePath": "https://buildfoc.ford.com/dig/Ford/Mustang/2024/HD-TILE/Image%5B%7CFord%7CMustang%7C2024%7C1%7C1.%7C300A...PM7..88D.89W.13R.COU.64T.99F.44X.GT.%5D/EXT/1/vehicle.png"
+  },
+  {
+    "carName": "G80",
+    "manufacturer": "Genesis (South Korea)",
+    "model": "Luxury",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "4,000 km",
+    "price": "$48,000",
+    "imagePath": "https://www.genesis.com/content/dam/genesis-p2/worldwide/assets/models/g80/24fl/color/genesis-ww-g80-facelift-sport-color-glossy-makalu-gray-small.png"
+  },
+  {
+    "carName": "Accord",
+    "manufacturer": "Honda (Japan)",
+    "model": "EX",
+    "year": "2022",
+    "fuelType": "Hybrid",
+    "mileage": "7,000 km",
+    "price": "$32,000",
+    "imagePath": "https://images.dealer.com/ddc/vehicles/2025/Honda/Accord/Sedan/oem/exterior/exterior-640-en_US.jpg"
+  },
+  {
+    "carName": "Sonata",
+    "manufacturer": "Hyundai (South Korea)",
+    "model": "SEL",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "2,500 km",
+    "price": "$28,000",
+    "imagePath": "https://cdn.alweb.com/thumbs/cars/article/fit710x532/1/%D9%85%D9%88%D8%A7%D8%B5%D9%81%D8%A7%D8%AA-%D9%87%D9%8A%D9%88%D9%86%D8%AF%D8%A7%D9%8A-%D8%B3%D9%88%D9%86%D8%A7%D8%AA%D8%A7-2017.jpg"
+  },
+  {
+    "carName": "F-Pace",
+    "manufacturer": "Jaguar (UK)",
+    "model": "R-Dynamic",
+    "year": "2021",
+    "fuelType": "Petrol",
+    "mileage": "10,000 km",
+    "price": "$65,000",
+    "imagePath": "https://media.production.jlrms.com/styles/hero_crop/s3/2022-04-07/image/35077388-0081-4f1a-a8fd-e987886419e2/Jaguar_F-PACE_23MY_400_SPORT_Exterior_Front_3-Quarter_120422.jpg?VersionId=GKOHqZfzUhj6jsqNEUHcNmi6uM1WwER_&h=f65997ef&itok=7aogYDfH"
+  },
+  {
+    "carName": "Wrangler",
+    "manufacturer": "Jeep (USA)",
+    "model": "Rubicon",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "6,000 km",
+    "price": "$60,000",
+    "imagePath": "https://www.jeep.co.uk/content/dam/jeep/crossmarket/wrangler-full-model-mca-2024/02-trim-selector/sahara/figurines/uk/JEEP-WRANGLER-SAHARA-MY25-PHEV-BLACK-FIGURINES.png"
+  },
+  {
+    "carName": "Range Rover Sport",
+    "manufacturer": "Land Rover (UK)",
+    "model": "HSE",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "3,500 km",
+    "price": "$95,000",
+    "imagePath": "https://media.cdn-jaguarlandrover.com/api/v2/images/105960/w/1600/h/900.jpg"
+  },
+  {
+    "carName": "Evora",
+    "manufacturer": "Lotus (UK)",
+    "model": "GT",
+    "year": "2021",
+    "fuelType": "Petrol",
+    "mileage": "7,000 km",
+    "price": "$85,000",
+    "imagePath": "https://cdn.dealeraccelerate.com/ecpch/2/1094/66872/790x1024/w/2021-lotus-evora-gt"
+  },
+  {
+    "carName": "Air",
+    "manufacturer": "Lucid (USA)",
+    "model": "Dream Edition",
+    "year": "2023",
+    "fuelType": "Electric",
+    "mileage": "1,200 km",
+    "price": "$150,000",
+    "imagePath": "https://crdms.images.consumerreports.org/c_lfill,w_563,q_auto,f_auto/prod/cars/cr/model-years/12893-2021-lucid-air"
+  },
+  {
+    "carName": "Levante",
+    "manufacturer": "Maserati (Italy)",
+    "model": "GranSport",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "5,000 km",
+    "price": "$80,000",
+    "imagePath": "https://www.thecarexpert.co.uk/wp-content/uploads/2019/04/15477-MaseratiLevanteTrofeo-2133x1200-cropped.jpeg"
+  },
+  {
+    "carName": "Maybach S-Class",
+    "manufacturer": "Maybach (Germany)",
+    "model": "S680",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "2,000 km",
+    "price": "$200,000",
+    "imagePath": "https://cdn.motor1.com/images/mgl/qkZ8Bg/s1/mercedes-maybach-night-series.jpg"
+  },
+  {
+    "carName": "720S",
+    "manufacturer": "McLaren (UK)",
+    "model": "Spider",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "3,000 km",
+    "price": "$230,000",
+    "imagePath": "https://cdn.motor1.com/images/mgl/krMYM/s3/mclaren-720s-spider-by-mso.jpg"
+  },
+  {
+    "carName": "E-Class",
+    "manufacturer": "Mercedes-Benz (Germany)",
+    "model": "E300 AMG",
+    "year": "2022",
+    "fuelType": "Hybrid",
+    "mileage": "4,500 km",
+    "price": "$65,000",
+    "imagePath": "https://file.kelleybluebookimages.com/kbb/base/evox/CP/8850/2014-Mercedes-Benz-E-Class-front_8850_032_1827x726_040_cropped.png"
+  },
+  {
+    "carName": "Patrol",
+    "manufacturer": "Nissan (Japan)",
+    "model": "Platinum",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "2,800 km",
+    "price": "$55,000",
+    "imagePath": "https://cdn.motor1.com/images/mgl/pb309v/s1/2025-nissan-patrol.webp"
+  },
+  {
+    "carName": "3008",
+    "manufacturer": "Peugeot (France)",
+    "model": "GT Line",
+    "year": "2022",
+    "fuelType": "Hybrid",
+    "mileage": "5,500 km",
+    "price": "$35,000",
+    "imagePath": "https://m.atcdn.co.uk/vms/media/e8092f4f71cc447392a9fbd4fd771644.jpg"
+  },
+  {
+    "carName": "Koleos",
+    "manufacturer": "Renault (France)",
+    "model": "Signature",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "3,200 km",
+    "price": "$30,000",
+    "imagePath": "https://imgd.aeplcdn.com/642x336/cw/cars/renault/kolese.jpg?q=80"
+  },
+  {
+    "carName": "Phantom",
+    "manufacturer": "Rolls-Royce (UK)",
+    "model": "Extended",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "1,000 km",
+    "price": "$450,000",
+    "imagePath": "https://images.collectingcars.com/020687/mainimage.jpg?w=1263&fit=fillmax&crop=edges&auto=format,compress&cs=srgb&q=85"
+  },
+  {
+    "carName": "Vitara",
+    "manufacturer": "Suzuki (Japan)",
+    "model": "GLX",
+    "year": "2022",
+    "fuelType": "Hybrid",
+    "mileage": "8,000 km",
+    "price": "$25,000",
+    "imagePath": "https://media.gemini.media/img/shift-eg/large/2023/12/24/2023_12_24_14_29_26_868.webp"
+  },
+  {
+    "carName": "Corolla",
+    "manufacturer": "Toyota (Japan)",
+    "model": "Altis",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "2,000 km",
+    "price": "$28,000",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVgvGj_oVJjWJ-965khoJHI3fb07O3PpyVjYSDLB04Bm863tjb1uN8woFeUepToe19Y-w&usqp=CAU"
+  },
+  {
+    "carName": "Volkicar",
+    "manufacturer": "Volkswagen (Germany)",
+    "model": "Golf GTI",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "2,500 km",
+    "price": "$40,000",
+    "imagePath": "https://cdn.al-ain.com/images/2019/1/09/127-161216-next-gen-vw-golf-gti_700x400.jpeg"
+  },
+  {
+    "carName": "Rapide",
+    "manufacturer": "Aston Martin (UK)",
+    "model": "AMR",
+    "year": "2020",
+    "fuelType": "Petrol",
+    "mileage": "18,000 km",
+    "price": "$150,000",
+    "imagePath": "https://cdn.motor1.com/images/mgl/PR28X/s1/aston-martin-rapide-amr.jpg"
+  },
+  {
+    "carName": "Q7",
+    "manufacturer": "Audi (Germany)",
+    "model": "Quattro",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "2,300 km",
+    "price": "$75,000",
+    "imagePath": "https://media.hatla2eestatic.com/uploads/ncarmodel/12957/big-up_bd7a0447f7c8e1697b54b13fbad8f574.png"
+  },
+  {
+    "carName": "Flying Spur",
+    "manufacturer": "Bentley (UK)",
+    "model": "Speed",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "4,100 km",
+    "price": "$220,000",
+    "imagePath": "https://www.thecarexpert.co.uk/wp-content/uploads/2022/08/Bentley-Flying-Spur-Mulliner-Blackline-1200x628-cropped.jpg"
+  },
+  {
+    "carName": "M4 Competition",
+    "manufacturer": "BMW (Germany)",
+    "model": "Coupe",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "1,800 km",
+    "price": "$85,000",
+    "imagePath": "https://cdn.motor1.com/images/mgl/RPrgg/s3/bmw-m4-competition-kith-design-study-edition-lead-image.jpg"
+  },
+  {
+    "carName": "Arrizo 5",
+    "manufacturer": "Chery (China)",
+    "model": "Sport",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "6,200 km",
+    "price": "$16,000",
+    "imagePath": "https://cdn.wheel-size.com/automobile/body/chery-arrizo-5-2023-2025-1705913134.8913212.jpg"
+  },
+  {
+    "carName": "Tahoe",
+    "manufacturer": "Chevrolet (USA)",
+    "model": "High Country",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "1,500 km",
+    "price": "$65,000",
+    "imagePath": "https://lirp.cdn-website.com/cc512cba/dms3rep/multi/opt/Tahoe2025-HighCountry-Black-640w.png"
+  },
+  {
+    "carName": "C5 Aircross",
+    "manufacturer": "Citroen (France)",
+    "model": "Shine Pack",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "1,200 km",
+    "price": "$26,000",
+    "imagePath": "https://www.egy-car.com/citroen-c5-aircross/%D8%B3%D8%AA%D8%B1%D9%88%D9%8A%D9%86-c5-aircross"
+  },
+  {
+    "carName": "Bronco",
+    "manufacturer": "Ford (USA)",
+    "model": "Wildtrak",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "3,000 km",
+    "price": "$50,000",
+    "imagePath": "https://www.vdm.ford.com/content/dam/na/ford/en_us/images/bronco/2025/jellybeans/25_frd_bro_bigb_4d_sblk_ps34.png"
+  },
+  {
+    "carName": "GV80",
+    "manufacturer": "Genesis (South Korea)",
+    "model": "Luxury AWD",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "4,400 km",
+    "price": "$60,000",
+    "imagePath": "https://cdn.inventoryrsc.com/StockImg/ColorMatched_01/cc_2025GSS01_01_640/cc_2025GSS011991804_01_640_PH3.jpg"
+  },
+  {
+    "carName": "Civic",
+    "manufacturer": "Honda (Japan)",
+    "model": "Sport Touring",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "1,100 km",
+    "price": "$28,000",
+    "imagePath": "https://images.hgmsites.net/lrg/2025-honda-civic-sport-cvt-angular-front-exterior-view_100939989_l.webp"
+  },
+  {
+    "carName": "Tucson",
+    "manufacturer": "Hyundai (South Korea)",
+    "model": "N Line",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "900 km",
+    "price": "$27,000",
+    "imagePath": "https://media.hatla2eestatic.com/uploads/ncarmodel/13273/big-up_3dd21b6adde618109c2d9968154ef86c.png"
+  },
+  {
+    "carName": "XF",
+    "manufacturer": "Jaguar (UK)",
+    "model": "R-Dynamic SE",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "5,000 km",
+    "price": "$58,000",
+    "imagePath": "https://media.cdn-jaguarlandrover.com/api/v2/images/88904/w/680.jpg"
+  },
+  {
+    "carName": "Cherokee",
+    "manufacturer": "Jeep (USA)",
+    "model": "Trailhawk",
+    "year": "2022",
+    "fuelType": "Petrol",
+    "mileage": "7,200 km",
+    "price": "$42,000",
+    "imagePath": "https://www.jeep.nl/content/dam/jeep/crossmarket/grand-cherokee-my24/06-make-your-choice/summit-reserve/figurines/JEEP-GRAND-CHEROKEE-SUMMIT-RESERVE-ROCKY-MOUNTAIN-565x330.png"
+  },
+  {
+    "carName": "Defender",
+    "manufacturer": "Land Rover (UK)",
+    "model": "110 X-Dynamic",
+    "year": "2023",
+    "fuelType": "Diesel",
+    "mileage": "3,300 km",
+    "price": "$88,000",
+    "imagePath": "https://media.cdn-jaguarlandrover.com/api/v2/images/105380/w/640.jpg"
+  },
+  {
+    "carName": "Emira",
+    "manufacturer": "Lotus (UK)",
+    "model": "First Edition",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "1,400 km",
+    "price": "$95,000",
+    "imagePath": "https://cdn.motor1.com/images/mgl/9YzPv/s1/lotus-emira-v6-first-edition.webp"
+  },
+  {
+    "carName": "Gravity",
+    "manufacturer": "Lucid (USA)",
+    "model": "SUV Launch Edition",
+    "year": "2024",
+    "fuelType": "Electric",
+    "mileage": "500 km",
+    "price": "$160,000",
+    "imagePath": "https://hips.hearstapps.com/hmg-prod/images/2026-lucid-gravity-198-67fd0f97ebd14.jpg?crop=1.00xw:1.00xh;0,0&resize=2048:*"
+  },
+  {
+    "carName": "MC20",
+    "manufacturer": "Maserati (Italy)",
+    "model": "Cielo",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "800 km",
+    "price": "$250,000",
+    "imagePath": "https://www.thecarexpert.co.uk/wp-content/uploads/2022/03/Maserati-MC20-2133x1200-cropped.jpg"
+  },
+  {
+    "carName": "Maybach GLS",
+    "manufacturer": "Maybach (Germany)",
+    "model": "600 4MATIC",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "1,000 km",
+    "price": "$180,000",
+    "imagePath": "https://ymimg1.b8cdn.com/uploads/car_model/11482/pictures/13385739/222.png"
+  },
+  {
+    "carName": "Artura",
+    "manufacturer": "McLaren (UK)",
+    "model": "Hybrid Supercar",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "1,500 km",
+    "price": "$240,000",
+    "imagePath": "https://mclaren.scene7.com/is/image/mclaren/P16FluxG34thFront_2?wid=1276&hei=718"
+  },
+  {
+    "carName": "GLC",
+    "manufacturer": "Mercedes-Benz (Germany)",
+    "model": "GLC 300 4MATIC",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "2,400 km",
+    "price": "$62,000",
+    "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSOwUCcfWyLwuXSTSEhVKUbOLLiwuZ0WxOWQ&s"
+  },
+  {
+    "carName": "Altima",
+    "manufacturer": "Nissan (Japan)",
+    "model": "SR",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "2,700 km",
+    "price": "$30,000",
+    "imagePath": "https://ms-prd-nna.use.mediaserver.heliosnissan.net/iris/iris?vehicle=8_L34&resp=png&bkgnd=transparent&pov=E01&w=5781&h=5370&x=1719&y=1481&height=250&width=660&paint=KH3&fabric=G&brand=nisnna&sa=1_B,2_DB,4_A,5_L,6_H,7_Z,11_D,12_U,13_A,SHADOW_ON,PI_ON,PE_ON,2025&imwidth=3840"
+  },
+  {
+    "carName": "5008",
+    "manufacturer": "Peugeot (France)",
+    "model": "GT Pack",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "1,800 km",
+    "price": "$38,000",
+    "imagePath": "https://media.hatla2eestatic.com/uploads/ncarmodel/13219/big-up_d8ea82f1263f4f8512110dce6fe8ef60.jpg"
+  },
+  {
+    "carName": "Megane E-Tech",
+    "manufacturer": "Renault (France)",
+    "model": "Electric Iconic",
+    "year": "2023",
+    "fuelType": "Electric",
+    "mileage": "900 km",
+    "price": "$35,000",
+    "imagePath": "https://aanbiedingen.renault.be/static/img/cars/versions/megane-e-tech-electric-techno_220_hp_comfort_range.png"
+  },
+  {
+    "carName": "Ghost",
+    "manufacturer": "Rolls-Royce (UK)",
+    "model": "Black Badge",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "700 km",
+    "price": "$390,000",
+    "imagePath": "https://c.ndtvimg.com/2020-09/6kp9uem_newgen-rollsroyce-ghost-unveiled_625x300_01_September_20.jpg"
+  },
+  {
+    "carName": "Swift",
+    "manufacturer": "Suzuki (Japan)",
+    "model": "Sport",
+    "year": "2023",
+    "fuelType": "Petrol",
+    "mileage": "3,000 km",
+    "price": "$20,000",
+    "imagePath": "https://www.contactcars.com/_next/image?url=https%3A%2F%2Fcontactcars.fra1.cdn.digitaloceanspaces.com%2Fcontactcars-production%2FImages%2FSmall%2FUsedCars%2F4f27c6bd-6239-4b4e-a825-7b50321c85d1.jpeg&w=3840&q=75"
+  },
+  {
+    "carName": "Camry",
+    "manufacturer": "Toyota (Japan)",
+    "model": "XSE Hybrid",
+    "year": "2023",
+    "fuelType": "Hybrid",
+    "mileage": "2,200 km",
+    "price": "$33,000",
+    "imagePath": "https://toyota-thaihoa.com.vn/wp-content/uploads/2022/03/AE10F9E59B774DC4A63487A1419E1534.png"
+  },
+  {
+    "carName": "ID.4",
+    "manufacturer": "Volkswagen (Germany)",
+    "model": "Pro Performance",
+    "year": "2023",
+    "fuelType": "Electric",
+    "mileage": "1,100 km",
+    "price": "$45,000",
+    "imagePath": "https://d2ivfcfbdvj3sm.cloudfront.net/i8SvJk9qAzr8SgS_/53985/stills_0640_png/MY2023/53985/53985_st0640_116.png?c=172&p=164&s=AbcvqD1o6PKda_1fkX4K8B"
+  }
+]
