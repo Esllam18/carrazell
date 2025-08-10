@@ -1,5 +1,6 @@
 import 'package:carraze/core/models/fiv_car.dart';
 import 'package:carraze/core/router/route_names.dart';
+import 'package:carraze/core/widgets/custom_snackbar.dart';
 import 'package:carraze/core/widgets/custom_text.dart';
 import 'package:carraze/core/widgets/custom_button.dart';
 import 'package:carraze/features/fiv%20feature/cubit/favorites_cubit.dart';
@@ -14,7 +15,7 @@ class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FavoritesCubit(),
+      create: (context) => FavoritesCubit()..loadFavorites(),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -150,19 +151,25 @@ class FavoritesPage extends StatelessWidget {
         trailing: SizedBox(
           width: 80,
           child: CustomButton(
-            backgroundColor: const Color(0xFFF44336),
+            backgroundColor: const Color(0xFF2E4A62),
             content: CustomText(
               txt: 'Remove',
               fontSize: 14,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
-            onPressed: () =>
-                context.read<FavoritesCubit>().removeFavoriteById(car.id),
+            onPressed: () {
+              context.read<FavoritesCubit>().removeFavoriteById(car.id);
+              CustomSnackBar.show(
+                context,
+                message: '${car.name} removed from favorites!',
+                type: SnackBarType.success,
+              );
+            },
           ),
         ),
         onTap: () {
-          GoRouter.of(context).push(RouteNames.carDetail, extra: car);
+          GoRouter.of(context).push(RouteNames.carDetail, extra: car.toCar());
         },
       ),
     );

@@ -1,9 +1,13 @@
+import 'dart:async';
+import 'package:carraze/core/models/car_model.dart';
 import 'package:carraze/core/router/route_names.dart';
 import 'package:carraze/core/widgets/custom_snackbar.dart';
 import 'package:carraze/core/widgets/custom_text.dart';
 import 'package:carraze/core/widgets/custom_text_field.dart';
 import 'package:carraze/core/widgets/custom_button.dart';
+import 'package:carraze/features/home/cubit/get_cars_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SearchPage extends StatefulWidget {
@@ -26,15 +30,15 @@ class _SearchPageState extends State<SearchPage> {
   final TextEditingController _maxPriceController = TextEditingController();
   final TextEditingController _minYearController = TextEditingController();
   final TextEditingController _maxYearController = TextEditingController();
+  Timer? _debounceTimer;
 
   String _selectedCategory = 'All';
-  double _minPrice = _defaultMinPrice;
-  double _maxPrice = _defaultMaxPrice;
-  int _minYear = _defaultMinYear;
-  int _maxYear = _defaultMaxYear;
+  List<Car> _cars = [];
+  List<Car> _filteredCars = [];
+  bool _isInitialLoad = true;
 
-  final List<String> _categories = [
-    "All",
+  static const List<String> _categories = [
+    'All',
     'Aston Martin (UK)',
     'Audi (Germany)',
     'Bentley (UK)',
@@ -67,60 +71,42 @@ class _SearchPageState extends State<SearchPage> {
     'Volkswagen (Germany)',
   ];
 
-  final List<Map<String, dynamic>> _cars = [
-    {
-      'name': 'Toyota Camry',
-      'category': 'Toyota (Japan)',
-      'price': 30000,
-      'year': 2023,
-    },
-    {
-      'name': 'BMW X5',
-      'category': 'BMW (Germany)',
-      'price': 60000,
-      'year': 2022,
-    },
-    {
-      'name': 'Ford Mustang',
-      'category': 'Ford (USA)',
-      'price': 45000,
-      'year': 2021,
-    },
-    {
-      'name': 'Audi A4',
-      'category': 'Audi (Germany)',
-      'price': 40000,
-      'year': 2020,
-    },
-  ];
-
-  List<Map<String, dynamic>> _filteredCars = [];
-
   @override
   void initState() {
     super.initState();
-    _filteredCars = List.from(_cars);
     _initializeControllers();
-    _addListeners();
+    _addTextListeners();
+    context.read<GetCarsCubit>().fetchCars();
   }
 
   void _initializeControllers() {
-    _minPriceController.text = _minPrice.toStringAsFixed(0);
-    _maxPriceController.text = _maxPrice.toStringAsFixed(0);
-    _minYearController.text = _minYear.toString();
-    _maxYearController.text = _maxYear.toString();
+    _minPriceController.text = _defaultMinPrice.toStringAsFixed(0);
+    _maxPriceController.text = _defaultMaxPrice.toStringAsFixed(0);
+    _minYearController.text = _defaultMinYear.toString();
+    _maxYearController.text = _defaultMaxYear.toString();
   }
 
-  void _addListeners() {
-    _searchController.addListener(_filterCars);
-    _minPriceController.addListener(_filterCars);
-    _maxPriceController.addListener(_filterCars);
-    _minYearController.addListener(_filterCars);
-    _maxYearController.addListener(_filterCars);
+  void _addTextListeners() {
+    _searchController.addListener(_debouncedFilterCars);
+    _minPriceController.addListener(_debouncedFilterCars);
+    _maxPriceController.addListener(_debouncedFilterCars);
+    _minYearController.addListener(_debouncedFilterCars);
+    _maxYearController.addListener(_debouncedFilterCars);
+  }
+
+  void _debouncedFilterCars() {
+    if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
+    _debounceTimer = Timer(const Duration(milliseconds: 300), _filterCars);
   }
 
   @override
   void dispose() {
+    _debounceTimer?.cancel();
+    _searchController.removeListener(_debouncedFilterCars);
+    _minPriceController.removeListener(_debouncedFilterCars);
+    _maxPriceController.removeListener(_debouncedFilterCars);
+    _minYearController.removeListener(_debouncedFilterCars);
+    _maxYearController.removeListener(_debouncedFilterCars);
     _searchController.dispose();
     _minPriceController.dispose();
     _maxPriceController.dispose();
@@ -130,28 +116,30 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _filterCars() {
-    setState(() {
-      _minPrice = double.tryParse(_minPriceController.text) ?? _defaultMinPrice;
-      _maxPrice = double.tryParse(_maxPriceController.text) ?? _defaultMaxPrice;
-      _minYear = int.tryParse(_minYearController.text) ?? _defaultMinYear;
-      _maxYear = int.tryParse(_maxYearController.text) ?? _defaultMaxYear;
+    final minPrice =
+        double.tryParse(_minPriceController.text) ?? _defaultMinPrice;
+    final maxPrice =
+        double.tryParse(_maxPriceController.text) ?? _defaultMaxPrice;
+    final minYear = int.tryParse(_minYearController.text) ?? _defaultMinYear;
+    final maxYear = int.tryParse(_maxYearController.text) ?? _defaultMaxYear;
 
-      _filteredCars = _cars.where(_applyFilters).toList();
+    setState(() {
+      _filteredCars = _cars.where((car) {
+        final matchesSearch = car.carName.toLowerCase().contains(
+          _searchController.text.toLowerCase(),
+        );
+        final matchesCategory =
+            _selectedCategory == 'All' || car.manufacturer == _selectedCategory;
+        final carPrice = double.tryParse(car.price.toString()) ?? 0;
+        final matchesPrice = carPrice >= minPrice && carPrice <= maxPrice;
+        final carYear = int.tryParse(car.year.toString()) ?? _defaultMinYear;
+        final matchesYear = carYear >= minYear && carYear <= maxYear;
+        return matchesSearch && matchesCategory && matchesPrice && matchesYear;
+      }).toList();
     });
   }
 
-  bool _applyFilters(Map<String, dynamic> car) {
-    final matchesSearch = car['name'].toString().toLowerCase().contains(
-      _searchController.text.toLowerCase(),
-    );
-    final matchesCategory =
-        _selectedCategory == 'All' || car['category'] == _selectedCategory;
-    final matchesPrice = car['price'] >= _minPrice && car['price'] <= _maxPrice;
-    final matchesYear = car['year'] >= _minYear && car['year'] <= _maxYear;
-    return matchesSearch && matchesCategory && matchesPrice && matchesYear;
-  }
-
-  void _onApplyFilters() {
+  void _applyFilters() {
     _filterCars();
     CustomSnackBar.show(
       context,
@@ -165,28 +153,6 @@ class _SearchPageState extends State<SearchPage> {
       controller: _searchController,
       hintText: 'Search by car name...',
       prefixIcon: const Icon(Icons.search, color: Colors.white70),
-    );
-  }
-
-  Widget _buildFiltersSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(
-          txt: 'Filters',
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-        const SizedBox(height: 10),
-        _buildCategoryDropdown(),
-        const SizedBox(height: 10),
-        _buildPriceRangeFields(),
-        const SizedBox(height: 10),
-        _buildYearRangeFields(),
-        const SizedBox(height: 20),
-        _buildApplyButton(),
-      ],
     );
   }
 
@@ -204,12 +170,14 @@ class _SearchPageState extends State<SearchPage> {
       dropdownColor: _backgroundOverlayColor,
       style: const TextStyle(color: Colors.white),
       icon: const Icon(Icons.arrow_drop_down, color: Colors.white70),
-      items: _categories.map((category) {
-        return DropdownMenuItem(
-          value: category,
-          child: CustomText(txt: category, color: Colors.white),
-        );
-      }).toList(),
+      items: _categories
+          .map(
+            (category) => DropdownMenuItem(
+              value: category,
+              child: CustomText(txt: category, color: Colors.white),
+            ),
+          )
+          .toList(),
       onChanged: (value) {
         setState(() {
           _selectedCategory = value!;
@@ -272,7 +240,51 @@ class _SearchPageState extends State<SearchPage> {
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
-      onPressed: _onApplyFilters,
+      onPressed: _applyFilters,
+    );
+  }
+
+  Widget _buildFiltersSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomText(
+          txt: 'Filters',
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        const SizedBox(height: 10),
+        _buildCategoryDropdown(),
+        const SizedBox(height: 10),
+        _buildPriceRangeFields(),
+        const SizedBox(height: 10),
+        _buildYearRangeFields(),
+        const SizedBox(height: 20),
+        _buildApplyButton(),
+      ],
+    );
+  }
+
+  Widget _buildCarCard(Car car) {
+    return Card(
+      color: _backgroundOverlayColor.withOpacity(_cardOpacity),
+      margin: const EdgeInsets.only(bottom: 10),
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundImage: car.imagePath.isNotEmpty
+              ? NetworkImage(car.imagePath)
+              : const AssetImage('assets/placeholder.jpg') as ImageProvider,
+          radius: 30,
+        ),
+        title: CustomText(txt: car.carName, color: Colors.white),
+        subtitle: CustomText(
+          txt: 'Price: \$${car.price} | Year: ${car.year}',
+          color: Colors.white70,
+        ),
+        onTap: () =>
+            GoRouter.of(context).push(RouteNames.carDetail, extra: car),
+      ),
     );
   }
 
@@ -287,46 +299,13 @@ class _SearchPageState extends State<SearchPage> {
           color: Colors.white,
         ),
         const SizedBox(height: 10),
-        _buildCarList(),
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: _filteredCars.length,
+          itemBuilder: (context, index) => _buildCarCard(_filteredCars[index]),
+        ),
       ],
-    );
-  }
-
-  Widget _buildCarList() {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: _filteredCars.length,
-      itemBuilder: (context, index) {
-        final car = _filteredCars[index];
-        return Card(
-          color: _backgroundOverlayColor.withOpacity(_cardOpacity),
-          margin: const EdgeInsets.only(bottom: 10),
-          child: ListTile(
-            leading: const Icon(Icons.directions_car, color: Colors.white70),
-            title: CustomText(txt: car['name'], color: Colors.white),
-            subtitle: CustomText(
-              txt: 'Price: \$${car['price']} | Year: ${car['year']}',
-              color: Colors.white70,
-            ),
-            onTap: () {
-              GoRouter.of(context).push(
-                RouteNames.carDetail,
-                extra: {
-                  'carName': car['name'],
-                  'manufacturer': car['category'].split(' (')[0],
-                  'model': car['name'].split(' ').last,
-                  'year': car['year'].toString(),
-                  'fuelType': 'Petrol',
-                  'mileage': '15000',
-                  'price': car['price'].toString(),
-                  'imagePath': 'assets/car2.jpg',
-                },
-              );
-            },
-          ),
-        );
-      },
     );
   }
 
@@ -348,23 +327,52 @@ class _SearchPageState extends State<SearchPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/car1.jpg"),
+            image: AssetImage('assets/car1.jpg'),
             fit: BoxFit.cover,
           ),
         ),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSearchBar(),
-              const SizedBox(height: 20),
-              _buildFiltersSection(),
-              const SizedBox(height: 20),
-              _buildResultsSection(),
-            ],
-          ),
+        child: BlocConsumer<GetCarsCubit, GetCarsState>(
+          listener: (context, state) {
+            if (state is GetCarsSuccess && _isInitialLoad) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                setState(() {
+                  _cars = state.cars;
+                  _filteredCars = _cars;
+                  _filterCars();
+                  _isInitialLoad = false;
+                });
+              });
+            }
+          },
+          builder: (context, state) {
+            if (state is GetCarsLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is GetCarsSuccess) {
+              return SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildSearchBar(),
+                    const SizedBox(height: 20),
+                    _buildFiltersSection(),
+                    const SizedBox(height: 20),
+                    _buildResultsSection(),
+                  ],
+                ),
+              );
+            } else if (state is GetCarsFailure) {
+              return Center(
+                child: CustomText(
+                  txt: state.message,
+                  color: Colors.red,
+                  fontSize: 16,
+                ),
+              );
+            }
+            return const SizedBox();
+          },
         ),
       ),
     );

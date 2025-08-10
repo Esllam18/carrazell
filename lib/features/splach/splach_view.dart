@@ -17,13 +17,13 @@ class _SplashViewState extends State<SplashView> {
 
     Future.delayed(const Duration(seconds: 3), () {
       final user = FirebaseAuth.instance.currentUser;
-      // if (user == null) {
-      GoRouter.of(context).replace(RouteNames.welcome);
-      //   return;
-      // } else {
-      //   GoRouter.of(context).replace(RouteNames.home);
-      //   return;
-      // }
+      if (user == null) {
+        GoRouter.of(context).replace(RouteNames.welcome);
+        return;
+      } else {
+        GoRouter.of(context).replace(RouteNames.home);
+        return;
+      }
     });
   }
 
