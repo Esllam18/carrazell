@@ -52,6 +52,8 @@ class _HomeBodyViewState extends State<HomeBodyView> {
   ];
 
   String selectedCategory = "All";
+  double _opacity = 0.0;
+  bool _dataLoaded = false;
 
   @override
   void initState() {
@@ -98,92 +100,106 @@ class _HomeBodyViewState extends State<HomeBodyView> {
             final state = snapshot.data!;
             if (state is GetCarsSuccess) {
               final cars = state.cars;
-
-              return Stack(
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/car1.jpg"),
-                        fit: BoxFit.cover,
+              if (!_dataLoaded) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  setState(() {
+                    _opacity = 1.0;
+                    _dataLoaded = true;
+                  });
+                });
+              }
+              return AnimatedOpacity(
+                opacity: _opacity,
+                duration: const Duration(milliseconds: 500),
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/car1.jpg"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  CustomScrollView(
-                    slivers: [
-                      SliverAppBar(
-                        floating: true,
-                        snap: true,
-                        pinned: false,
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        centerTitle: true,
-                        title: CustomText(
-                          txt: 'Cars',
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        leading: IconButton(
-                          icon: const Icon(Icons.menu, color: Colors.white),
-                          onPressed: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                        ),
-                      ),
-                      SliverToBoxAdapter(child: SizedBox(height: 16)),
-                      SliverToBoxAdapter(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: categories
-                                .map(
-                                  (category) => buildCategoryChip(
-                                    category: category,
-                                    onSelected: (selectedCategory) {
-                                      onCategorySelected(category);
-                                    },
-                                    selectedCategory: selectedCategory,
-                                  ),
-                                )
-                                .toList(),
+                    CustomScrollView(
+                      slivers: [
+                        SliverAppBar(
+                          floating: true,
+                          snap: true,
+                          pinned: false,
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          centerTitle: true,
+                          title: CustomText(
+                            txt: 'Cars',
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          leading: IconButton(
+                            icon: const Icon(Icons.menu, color: Colors.white),
+                            onPressed: () {
+                              Scaffold.of(context).openDrawer();
+                            },
                           ),
                         ),
-                      ),
-                      SliverToBoxAdapter(child: SizedBox(height: 16)),
-                      SliverGrid(
-                        delegate: SliverChildBuilderDelegate((context, index) {
-                          return CarCard(
-                            price: cars[index].price,
-                            carName: cars[index].carName,
-                            onTap: () {
-                              try {
-                                GoRouter.of(context).push(
-                                  RouteNames.carDetail,
-                                  extra: cars[index],
-                                );
-                              } catch (e) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Navigation error: $e'),
-                                  ),
-                                );
-                              }
-                            },
-                            imagePath: cars[index].imagePath,
-                          );
-                        }, childCount: cars.length),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                              childAspectRatio: 0.75,
+                        SliverToBoxAdapter(child: SizedBox(height: 16)),
+                        SliverToBoxAdapter(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: categories
+                                  .map(
+                                    (category) => buildCategoryChip(
+                                      category: category,
+                                      onSelected: (selectedCategory) {
+                                        onCategorySelected(category);
+                                      },
+                                      selectedCategory: selectedCategory,
+                                    ),
+                                  )
+                                  .toList(),
                             ),
-                      ),
-                    ],
-                  ),
-                ],
+                          ),
+                        ),
+                        SliverToBoxAdapter(child: SizedBox(height: 16)),
+                        SliverGrid(
+                          delegate: SliverChildBuilderDelegate((
+                            context,
+                            index,
+                          ) {
+                            return CarCard(
+                              price: cars[index].price,
+                              carName: cars[index].carName,
+                              onTap: () {
+                                try {
+                                  GoRouter.of(context).push(
+                                    RouteNames.carDetail,
+                                    extra: cars[index],
+                                  );
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Navigation error: $e'),
+                                    ),
+                                  );
+                                }
+                              },
+                              imagePath: cars[index].imagePath,
+                            );
+                          }, childCount: cars.length),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                childAspectRatio: 0.75,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               );
             } else if (state is GetCarsFailure) {
               return Center(
