@@ -33,13 +33,23 @@ class _ProfileViewState extends State<ProfileView> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
+
         elevation: 0,
         title: const CustomText(
           txt: 'Profile',
           fontSize: 24,
           fontWeight: FontWeight.bold,
           color: Colors.white,
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            if (GoRouter.of(context).canPop()) {
+              context.pop();
+            } else {
+              context.go(RouteNames.home);
+            }
+          },
         ),
       ),
       body: Container(

@@ -185,7 +185,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                     phone: _phoneController.text,
                                     additionalInfo:
                                         _additionalInfoController.text,
-                                    imageUrl: '', // Update if needed
+                                    // i dont need change image profile
+                                    imageUrl: widget.user?.imageUrl ?? '',
                                   );
                                   context.read<DataUserCubit>().updateUserInfo(
                                     userId,

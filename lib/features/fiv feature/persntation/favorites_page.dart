@@ -151,7 +151,7 @@ class FavoritesPage extends StatelessWidget {
         trailing: SizedBox(
           width: 80,
           child: CustomButton(
-            backgroundColor: const Color(0xFF2E4A62),
+            backgroundColor: const Color.fromARGB(255, 178, 39, 29),
             content: CustomText(
               txt: 'Remove',
               fontSize: 14,

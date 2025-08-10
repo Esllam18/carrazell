@@ -29,6 +29,16 @@ class UserProfileInfoPage extends StatelessWidget {
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            if (GoRouter.of(context).canPop()) {
+              context.pop();
+            } else {
+              context.go(RouteNames.profile);
+            }
+          },
+        ),
       ),
       body: Container(
         height: double.infinity,

@@ -28,6 +28,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => context.pop(),
@@ -137,14 +138,12 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                   ),
                   style: const TextStyle(color: Colors.white, fontSize: 16),
                   underline: const SizedBox(),
-                  items: <String>['English', 'Spanish', 'French', 'German'].map(
-                    (String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: CustomText(txt: value, fontSize: 16),
-                      );
-                    },
-                  ).toList(),
+                  items: <String>['English', 'العربية'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: CustomText(txt: value, fontSize: 16),
+                    );
+                  }).toList(),
                   onChanged: (String? newValue) {
                     if (newValue != null) {
                       setState(() {
